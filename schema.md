@@ -14,13 +14,15 @@ Par exemple, un utilisateur peut saisir sans faire exprès un plat avec catégor
 - Non ma clé étrangère n'est pas `NOT NULL` car une commande n'est pas forcément associée à un client habitué.
 - Il faut utiliser LEFT JOIN pour ne perdre aucune commande 
 
+#### Etape 5
+- Une table et un commande sont deux choses différentes car on peut passer une commande sans avoir besoin de table
+
 ## SCHEMA
 
 - plat(**id**, nom_plat, prix, #id_categorie) 
 - categorie(**id**,nom_categorie) 
-- commande(**id**, code, date_commande. #id_client) *(modifié)*
+- commande(**id**, code, date_commande. #id_client?, #id_table?, #id_serveur) *(modifié)*
 - commande_plat(**id**, #id_commande, #id_plat, quantite) 
-- client(**id**, nom_client) *(nouveau)*
-
-#### Etape 5
-- 
+- client(**id**, nom_client) 
+- tables(**id**, nom_table) *(nouveau)*
+- serveurs(**id**, nom_serveur) *(nouveau)*

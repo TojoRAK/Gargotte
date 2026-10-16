@@ -23,3 +23,13 @@ CASE
 END as client
 
 FROM commande c LEFT JOIN client cli ON c.id_client = cli.id;
+
+-- ETAPE 5 : NOMBRE DE COMMANDES ET CA PAR SERVEUR 
+
+SELECT 
+    s.id, SUM(cp.quantite * p.prix) as ca_par_serveur,  COUNT(DISTINCT(c.id)) as commande_par_serveur
+FROM commande_plat cp
+JOIN commande c ON c.id = cp.id_commande
+JOIN plat p ON p.id = cp.id_plat
+JOIN serveurs s ON c.id_serveur = s.id
+GROUP BY s.id;   
