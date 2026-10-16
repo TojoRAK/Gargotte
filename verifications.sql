@@ -1,2 +1,5 @@
 -- ETAPE 1 : LES PLATS DU PLUS CHER AU MOINS CHER
 SELECT * FROM plat ORDER BY prix DESC;
+
+-- ETAPE 2 : NOMBRE DE PLATS PAR CATEGORIE
+SELECT c.id, COUNT(p.*)   FROM plat p RIGHT JOIN categorie c ON c.id = p.id_categorie  GROUP BY c.id;
