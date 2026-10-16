@@ -10,10 +10,17 @@ Par exemple, un utilisateur peut saisir sans faire exprès un plat avec catégor
 #### Etape 3
 - J'ai placé la quantite dans commande_plat
 
+#### Etape 4
+- Non ma clé étrangère n'est pas `NOT NULL` car une commande n'est pas forcément associée à un client habitué.
+- Il faut utiliser LEFT JOIN pour ne perdre aucune commande 
 
 ## SCHEMA
 
 - plat(**id**, nom_plat, prix, #id_categorie) 
 - categorie(**id**,nom_categorie) 
-- commande(**id**, code, date_commande) *(nouveau)*
-- commande_plat(**id**, #id_commande, #id_plat, quantite) *(nouveau)*
+- commande(**id**, code, date_commande. #id_client) *(modifié)*
+- commande_plat(**id**, #id_commande, #id_plat, quantite) 
+- client(**id**, nom_client) *(nouveau)*
+
+#### Etape 5
+- 

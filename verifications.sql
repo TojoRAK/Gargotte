@@ -12,3 +12,14 @@ FROM commande_plat cp
 JOIN commande c ON c.id = cp.id_commande
 JOIN plat p ON p.id = cp.id_plat
 GROUP BY cp.id_commande, c.code;   
+
+-- ETAPE 4 : LISTE DES COMMANDES AVEC CLIENT 
+
+SELECT 
+c.id, c.date_commande, c.code,
+CASE 
+    WHEN c.id_client IS NULL THEN 'client de passage' 
+    ELSE cli.nom_client
+END as client
+
+FROM commande c LEFT JOIN client cli ON c.id_client = cli.id;
